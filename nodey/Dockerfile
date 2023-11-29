@@ -1,17 +1,21 @@
-FROM ubuntu:18.04
+# Use Node 16 alpine as parent image
+FROM node:16-alpine
 
+# Change the working directory on the Docker image to /app
+WORKDIR /app
 
-RUN apt-get update -y
-RUN apt install curl -y
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-RUN . ~/.nvm/nvm.sh
-RUN nvm install node
+# Copy package.json and package-lock.json to the /app directory
+COPY package.json package-lock.json ./
 
-COPY nodey /opt/
-RUN cd nodey
+# Install dependencies
 RUN npm install
-RUN npm start
 
+# Copy the rest of project files into this image
+COPY . .
 
+# Expose application port
+EXPOSE 80
 
-WORKDIR /opt/
+# Start the application
+CMD npm start
+
