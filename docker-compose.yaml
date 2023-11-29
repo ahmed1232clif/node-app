@@ -3,7 +3,7 @@ version: '3'
 services:
   nodeapp:
     build: ./nodey
-    container_name: nodeapp
+    container_name: node
     ports:
       - "80:80"
     network_mode: bridge
