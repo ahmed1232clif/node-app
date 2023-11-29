@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  nodeapp:
+    build: ./nodey
+    container_name: nodeapp
+    ports:
+      - "80:80"
+    network_mode: bridge
