@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-cd node-app
+cd home/ubuntu/node-app/
 
 docker-compose up
